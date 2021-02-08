@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DiscordJS</title>
+  <link rel="shortcut icon" type="image/png" href="images/ico_full.png"/>
+  <link rel="stylesheet" href="stylesheet/prism.css">
+  <link rel="stylesheet" href="stylesheet/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+  <!-- Introduction -->
+  <div class="banner" style="display: block !important; background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('https://i.redd.it/gmyldjq35fy51.png');">
+    <div id="class-languages">
+      <i class="fab fa-html5 mr-1" style="color: #f84820"></i>
+      <i class="fab fa-css3-alt mr-1" style="color: #1970b5"></i>
+      <i class="fab fa-js-square mr-1" style="color: #FFE01B"></i>
+    </div>
+    <div class="container">
+      <div class="main">
+        <img src="images/logo.png" alt="">
+        <div class="class-title">
+          <h1>Commandes dans DiscordJS</h1>
+        </div>
+      </div>
+      <p>On va explorer comment créer des commandes pour ton bot Discord</p>
+      <a class="btn btn-primary tl-button" href="#challenge" role="button">Commencer !</a>
+    </div>
+  </div>
+
+  <div class="container" id="challenge">
+
+    <div class="accordion" id="accordionExample">
+
+      <!-- Étape 1 -->
+      <div class="card">
+        <div class="card-header" id="heading1">
+          <h2 class="mb-0">
+            <button class="btn btn-link done task" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+              Étape 1 - Défis à compléter avant
+            </button>
+          </h2>
+        </div>
+        <div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>Avant d'entamer ce défi, assure toi d'avoir déjà fait ceux ci:</p>
+            <ul>
+              <li><a href="https://techieslab.github.io/DiscordJS-PingPong/">Discord.js - Ping Pong</a></li>
+              <li><a href="https://techieslab.github.io/DiscordJS-Commandes/">Discord.js - Commandes</a></li>
+            </ul>
+            <p>Ensuite, assure-toi que tu sois bien connecté à ton compte <a href="https://repl.it">Repl.It</a>, et que tu aies ton projet de la fois passée.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Étape 2 -->
+      <div class="card">
+        <div class="card-header" id="heading2">
+          <h2 class="mb-0">
+            <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+              Étape 2 - Mentions
+            </button>
+          </h2>
+        </div>
+        <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>Aujourd'hui on va ajouter une functionalité intéressante à notre bot! Il va pouvoir mentionner quelqu'un. Par example, lorsque je dis "David" dans un message, notre bot va automatiquement taguer le compte de David.</p>
+
+            <p>En réalité, cela n'est pas bien dur! Rappellons qu'on peut envoyer des messages avec les deux codes suivats:</p>
+
+            <pre><code class="language-js">
+              // Répondre au message (Taguer celui qui l'a envoyé)
+              msg.reply("Pong"); // => "@DanielCortild Pong"
+
+              // Simplement envoyer un message
+              msg.channel.send("Pong"); => "Pong"
+            </code></pre>
+
+            <p>Mais pour l'instant, on n'a pas de solutions pour taguer quelqu'un d'autre. En réalité, c'est bien simple! On va répondre avec un "@DanielCortikd" au début du message!</p>
+
+            <p>Bon ce n'est quand même pas aussi facile! Imaginons il y a deux "DanielCortild" sur le serveur... Lequel choisir? On va donc se servir de l'ID de l'utilisateur qu'on veut taguer. Pour le trouver, fait un clique droit sur l'utilisateur que tu veux taguer et copie l'ID. Alors on écrit comme ceci:</p>
+
+            <pre><code class="language-js">
+              // Pour taguer @DanielCortild
+              msg.channel.send("<@414179403694866432> Je t'ai tagué"); => "@DanielCortild Je t'ai tagué"
+            </code></pre>
+
+            <p>Super on peut taguer un utilisateur maintenant!!</p>
+
+            <p>On peut aussi vérifier si un utilisateur tague quelqu'un! Pour ce faire, on va utiliser un autre attribut de <code>msg</code>.</p>
+
+            <p>Pour vérifier si un message tague un utilisateur, on vérifie si son ID fait partie du message. Pour vérifier si un texte appartient à un message on fait comme suit:</p>
+
+            <pre><code class="language-js">
+              if(msg.content.includes("414179403694866432")) {
+                // ...
+              }
+            </code></pre>
+
+            <p><b>Challenge</b>: Fait en sorte que lorsqu'un utilisateur tagues une personne, le bot réponds qu'il n'est pas disponible mais qu'il peut essayer de parler avec une autre personne, et taguer cette autre personne.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Étape 3 -->
+      <div class="card">
+        <div class="card-header" id="heading3">
+          <h2 class="mb-0">
+            <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+              Étape 3 - GIFS
+            </button>
+          </h2>
+        </div>
+        <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>On va maintenant essayer d'envoyer des GIFS. Ceci n'est pas une tâche simple, mais on va essayer du mieux que l'on le peut.</p>
+
+            <p>D'abord, va trouver un GIF que tu aimes bien sur <a href="https://giphy.com/">Giphy</a>. C'est leur base de données qu'on va utiliser pour notre bot.</p>
+
+            <p>Quand tu as trouvé ton GIF préferé, appuies sur "Copy Link", puis copies le "Short Link". Il ressemble à ceci:</p>
+
+            <pre><code class="language-js">
+              // https://gph.is/g/Zy6N6jn
+            </code></pre>
+
+            <p>Essaie de simplement envoyer ce lien dans Discord (Sans ton bot). Normalement tu verra le GIF apparaître. Essaie mainteannt de faire envoyer ce lien avec ton bot!</p>
+
+            <p>Bon c'est super de pouvoir envoyer un GIF, mais imaginons on veut donner accès à l'utilisateur de rechercher un GIF. Alors on doit faire en sorte que le bot aille d'abord rechercher le GIF dans la base de données de Giphy, et ensuite nous le montre.</p>
+
+            <p>Pour que cela puisse marcher, on doit en fait envoyer une <b>demande</b> au serveur de Giphy. Ceci s'appelle une <b>requête</b>, et on envoit cette <b>requête</b> à un <b>API</b>. Le <b>API</b> va alors nous répondre avec différents liens qu'on peut utiliser.</p>
+
+            <p>Pour communiquer avec des <b>API</b>, on utilise la fonction <code>fetch</code>. Pour pouvoir l'utiliser, on commence par l'importer.</p>
+
+            <pre class="code language-js">
+              const fetch = require('node-fetch');
+            </pre>
+
+            <p>Ceci doit apparaître en haut du code.</p>
+            
+            <p>Ensuite on va devoir rechercher sur un lien. Ce lien est un peu compliqué, donc je vous le donne!</p>
+
+            <pre><code class="language-js">
+              "https://api.giphy.com/v1/gifs/search?api_key=XXXXXXX&q=chats"
+            </code></pre>
+
+            <p>Ce lien est partagé en plusieurs parties:</p>
+
+            <ul>
+              <li>'https://api.giphy.com/' nous indique qu'on travaille sur le API de Giphy.</li>
+              <li>'v1/gifs/search' nous indique qu'on recherche des gifs.</li>
+              <li>'?api_key=XXXXXXX' nous indique la clé secrète qu'on utilise. <b>Demande là à ton animateur!</b></li>
+              <li>'&q=chats' indique qu'on recherche des gifs de chats.</li>
+            </ul>
+
+            <p>Pour rechercher des gifs, on fait alors comme ceci:</p>
+
+            <pre><code class="language-js">
+              fetch("https://api.giphy.com/v1/gifs/search?api_key=XXXXXXX&q=chats")
+                .then(function (response) {
+                  return response.json();
+                })
+                .then(function (response) {
+                  msg.channel.send(response.data[0].url);
+                });
+            </code></pre>
+
+            <p>Je peux admettre que ceci fait peur, et c'est en effet du code compliqué! Je te conseille donc de simplement copier-coller ce code!</p>
+
+            <p>Ce lien va nous donner un gif avec un chat. Pour changer ce qu'on voit, on peut faire comme ceci:</p>
+
+            <pre><code class="language-js">
+              "https://api.giphy.com/v1/gifs/search?api_key=XXXXXXX&q=" + "chats"
+            </code></pre>
+
+            <p>Ou encore, pour rechercher le deuxième mot dans notre message:</p>
+
+            <pre><code class="language-js">
+              "https://api.giphy.com/v1/gifs/search?api_key=XXXXXXX&q=" + msg_sep[1]
+            </code></pre>
+
+            <p>Tu devrais maintenant pouvoir afficher toute sortes de gifs!</p>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Étape 4 -->
+      <div class="card">
+        <div class="card-header" id="heading4">
+          <h2 class="mb-0">
+            <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+              Étape 4 - Publie ton bot
+            </button>
+          </h2>
+        </div>
+        <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>Pour que ton bot soit toujours actif, nous allons devoir ajouter un peu de code.</p>
+
+            <p>En haut de ton code, écris ceci:</p>
+
+            <pre><code class="language-js">
+              const express = require('express');
+              const app = express();
+              app.get('/', (req, res) => res.send("En vie"));
+              app.listen(3000);
+            </code></pre>
+
+            <p>Quand tu lances ton code, tu verra "En vie" sur la page. Copie alors le lien et envoie le à ton animateur. Il va le mettre sur un service qui s'appelle Uptime, qui garde ton bot en ligne tout le temps.</p>
+
+            <p>Voilà, ton code sera actif maintenant tout le temps!!</p>
+          </div>
+        </div>
+      </div>
+
+    </div> 
+  </div>
+
+
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="https://techieslab.be/"><i class="fas fa-globe"></i></i></a>
+    <a href="https://www.facebook.com/TechiesLabBrussels"><i class="fab fa-facebook"></i></a>
+    <a href="https://twitter.com/TechiesLab"><i class="fab fa-twitter"></i></a>
+  </div>
+  <div class="footer-copyright">
+    <a href="https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/3298561-faites-votre-mise-en-page-avec-flexbox#/id/r-3298711" rel="noopener noreferrer" target="_blank" class="alert-link copyright">
+      <i class="far fa-copyright"></i>
+      2020 Techies Lab ASBL. All rights reserved.
+    </a>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="javascript/prism.js"></script>
+</body>
+</html>
